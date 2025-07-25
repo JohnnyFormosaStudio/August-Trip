@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Squad - Cultural Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)),
+                url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('images/taiwan-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-letter {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            animation: slideInLeft 1s ease-out 0.3s both;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .trip-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 230, 109, 0.8));
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .overview-card.day-index {
+            padding: 12px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .overview-card.day-index h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .overview-card.day-index p {
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .itinerary {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            animation: slideInRight 1s ease-out 0.6s both;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .day-item {
+            display: flex;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .day-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .day-number {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .day-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .day-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            width: 100%;
+            text-align: left;
+        }
+
+        .day-content ul {
+            list-style: none;
+            padding-left: 0;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .day-content li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .day-content li:before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .photo-gallery {
+            margin-top: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 15px;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            box-sizing: border-box;
+        }
+
+        .gallery-images {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-image {
+            position: absolute;
+            border-radius: 12px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            width: 300px;
+            height: 200px;
+        }
+
+        .gallery-image.center {
+            transform: translateX(0) scale(1.2) rotateY(0deg);
+            z-index: 5;
+            opacity: 1;
+        }
+
+        .gallery-image.left {
+            transform: translateX(-180px) scale(0.8) rotateY(-25deg);
+            z-index: 3;
+            opacity: 0.7;
+            filter: brightness(0.8);
+        }
+
+        .gallery-image.right {
+            transform: translateX(180px) scale(0.8) rotateY(25deg);
+            z-index: 3;
+            opacity: 0.7;
+            filter: brightness(0.8);
+        }
+
+        .gallery-image.far-left {
+            transform: translateX(-320px) scale(0.6) rotateY(-35deg);
+            z-index: 1;
+            opacity: 0.4;
+            filter: brightness(0.6);
+        }
+
+        .gallery-image.far-right {
+            transform: translateX(320px) scale(0.6) rotateY(35deg);
+            z-index: 1;
+            opacity: 0.4;
+            filter: brightness(0.6);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(255,255,255,1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .gallery-prev {
+            left: 15px;
+        }
+
+        .gallery-next {
+            right: 15px;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-dot:hover {
+            background: rgba(255,255,255,0.7);
+            transform: scale(1.2);
+        }
+
+        .gallery-dot.active {
+            background: rgba(255,255,255,1);
+            transform: scale(1.3);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .practical-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .qr-codes {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .qr-code:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #FFE66D, #FF6B6B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .day-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .day-number {
+                margin: 0 auto 15px auto;
+            }
+            
+            .qr-codes {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .trip-overview {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .overview-card.day-index {
+                padding: 10px;
+                min-height: 70px;
+            }
+            
+            .overview-card.day-index h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            
+            .overview-card.day-index p {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .trip-overview {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 6px;
+            }
+            
+            .overview-card.day-index {
+                padding: 8px;
+                min-height: 60px;
+            }
+        }
+
+        .floating-element {
+            background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .floating-element-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .floating-day-selector-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button-label {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            opacity: 1;
+            pointer-events: none;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-day-selector {
+            position: relative;
+        }
+
+        .day-selector-toggle {
+            background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+            margin: 0;
+        }
+
+        .day-selector-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .day-selector-menu {
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 60px;
+            width: 160px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 10px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .day-option {
+            background: none;
+            border: none;
+            padding: 12px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.2s ease;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+            line-height: 1.4;
+        }
+
+        .day-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .day-option:active {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Room Assignment Styles */
+        .room-assignments {
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .room-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .room-tab {
+            background: rgba(102, 126, 234, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+            min-width: 100px;
+        }
+
+        .room-tab:hover {
+            background: rgba(102, 126, 234, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .room-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .room-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .room-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .room-table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .room-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .room-table thead {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .room-table th,
+        .room-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .room-table th {
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .room-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .room-table tbody tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+            transform: scale(1.01);
+        }
+
+        .room-table tbody tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .room-table td:first-child {
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .checkout-note {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            .room-tabs {
+                gap: 5px;
+            }
+            
+            .room-tab {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+                min-width: 80px;
+            }
+            
+            .room-table th,
+            .room-table td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-element-container">
+        <div class="button-label">Back to Top</div>
+        <div class="floating-element" onclick="scrollToTop()">
+            🏔️
+        </div>
+    </div>
+
+    <div class="floating-day-selector-container">
+        <div class="button-label">Go To</div>
+        <div class="floating-day-selector">
+            <button class="day-selector-toggle" onclick="toggleDaySelector()">📅</button>
+            <div class="day-selector-menu" id="daySelectorMenu">
+                <button class="day-option" onclick="scrollToDay('day1')">Day 1 - Welcome</button>
+                <button class="day-option" onclick="scrollToDay('day2')">Day 2 - Mountains</button>
+                <button class="day-option" onclick="scrollToDay('day3')">Day 3 - Jiufen</button>
+                <button class="day-option" onclick="scrollToDay('day4')">Day 4 - Urban</button>
+                <button class="day-option" onclick="scrollToDay('day5')">Day 5 - Free Day</button>
+                <button class="day-option" onclick="scrollToDay('day6')">Day 6 - Palaces</button>
+                <button class="day-option" onclick="scrollToDay('day7')">Day 7 - Tainan</button>
+                <button class="day-option" onclick="scrollToDay('day8')">Day 8 - Culture</button>
+                <button class="day-option" onclick="scrollToDay('day9')">Day 9 - Creative</button>
+                <button class="day-option" onclick="scrollToDay('day10')">Day 10 - Yilan</button>
+                <button class="day-option" onclick="scrollToDay('day11')">Day 11 - Beach</button>
+                <button class="day-option" onclick="scrollToDay('day12')">Day 12 - Free Day</button>
+                <button class="day-option" onclick="scrollToDay('day13')">Day 13 - Cooking</button>
+                <button class="day-option" onclick="scrollToDay('day14')">Day 14 - Goodbye</button>
+                <button class="day-option" onclick="scrollToRoomAssignments()">Room Assignments</button>
+                <button class="day-option" onclick="scrollToContact()">Contact Info</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Taiwan Squad</h1>
+            <p>Get ready for Taiwan!! An unforgettable 14-day journey</p>
+            <p>August 2 - August 15</p>
+            <div style="margin-top: 30px;">
+                <span class="highlight" style="font-size: 1.5rem;">Meaningful exploration, immersive cultural experiences, and adventure!</span>
+            </div>
+        </div>
+
+        <div class="welcome-letter">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Welcome Letter</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">We're so excited to have you join us for this unforgettable journey to Taiwan! This trip is all about meaningful exploration, immersive cultural experiences, and most importantly—fun, connection, and adventure for everyone in the group.</p>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">We've put together a mix of engaging, interactive activities that will allow everyone to learn about Taiwan and have fun. We want to focus on giving the kids opportunities to explore independently, build confidence, and experience the incredible safety and friendliness that Taiwan is known for.</p>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">At the same time, we know how important flexibility is when traveling, so the schedule includes plenty of free time to relax, recharge, or go off and explore on your own. We want you to feel like you're on vacation too!!</p>
+            
+            <p style="text-align: center; font-size: 1.2rem; margin-top: 30px;"><strong>With excitement,<br>Dina and Welly</strong></p>
+        </div>
+
+        <div class="welcome-letter">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Trip Overview</h2>
+            <div class="trip-overview">
+                <div class="overview-card day-index" onclick="scrollToDay('day1')">
+                    <h3>📅 Day 1</h3>
+                    <p>Welcome to Taipei</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day2')">
+                    <h3>🌿 Day 2</h3>
+                    <p>Mountains & Markets</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day3')">
+                    <h3>🏮 Day 3</h3>
+                    <p>Magical Jiufen</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day4')">
+                    <h3>🎭 Day 4</h3>
+                    <p>Rest and Urban Wandering</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day5')">
+                    <h3>😊 Day 5</h3>
+                    <p>Free Day/TBD</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day6')">
+                    <h3>🏛 Day 6</h3>
+                    <p>Palaces & Parks</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day7')">
+                    <h3>🚆 Day 7</h3>
+                    <p>Off to Tainan!</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day8')">
+                    <h3>🎶 Day 8</h3>
+                    <p>Culture & Return</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day9')">
+                    <h3>🧵 Day 9</h3>
+                    <p>Creative Pulse</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day10')">
+                    <h3>🌾 Day 10</h3>
+                    <p>Yilan Day Trip</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day11')">
+                    <h3>🏖 Day 11</h3>
+                    <p>Beach & Heritage</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day12')">
+                    <h3>😊 Day 12</h3>
+                    <p>Free Day/TBD</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day13')">
+                    <h3>🍜 Day 13</h3>
+                    <p>Cook Like a Local</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToDay('day14')">
+                    <h3>✈️ Day 14</h3>
+                    <p>Goodbye for Now</p>
+                </div>
+                <div class="overview-card day-index" onclick="scrollToRoomAssignments()" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.8), rgba(255, 193, 7, 0.8));">
+                    <h3>🏨 Room Assignments</h3>
+                    <p>View Room Details</p>
+                </div>
+                <div class="overview-card day-index contact-link" onclick="scrollToContact()" style="background: linear-gradient(135deg, rgba(78, 205, 196, 0.8), rgba(69, 183, 209, 0.8));">
+                    <h3>📱 Stay Connected</h3>
+                    <p>QR Codes & Contact Info</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="itinerary">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #667eea; font-size: 2.5rem;">Daily Itinerary</h2>
+            
+            <div class="day-item" id="day-1">
+                <div class="day-number">1</div>
+                <div class="day-content">
+                    <h3>🌇 Day 1: August 2 (Saturday) — Welcome to Taipei</h3>
+                    <ul>
+                        <li>Arrival in Taipei + breakfast at the hotel</li>
+                        <li>Settle into rooms and explore Dazhi neighborhood</li>
+                        <li>Optional: Shrimping adventure</li>
+                        <li>Group outing to Taipei 101 in the evening</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day1">
+                                <img src="images/day1-1.jpg" alt="Taipei arrival" class="gallery-image">
+                                <img src="images/day1-2.jpg" alt="Hotel breakfast" class="gallery-image">
+                                <img src="images/day1-3.jpg" alt="Dazhi exploration" class="gallery-image">
+                                <img src="images/day1-4.jpg" alt="Shrimping adventure" class="gallery-image">
+                                <img src="images/day1-5.jpg" alt="Taipei 101 evening" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day1', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day1', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day1', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day1', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day1', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day1', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day1', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-2">
+                <div class="day-number">2</div>
+                <div class="day-content">
+                    <h3>🌿 Day 2: August 3 (Sunday) — Mountains & Markets</h3>
+                    <ul>
+                        <li>Scenic drive through Yangmingshan National Park</li>
+                        <li>Visit the alpacas!!</li>
+                        <li>Beitou Library / Hot Spring Park</li>
+                        <li>Free time to relax or explore</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day2">
+                                <img src="images/day2-1.jpg" alt="Yangmingshan drive" class="gallery-image">
+                                <img src="images/day2-2.jpg" alt="Alpaca farm" class="gallery-image">
+                                <img src="images/day2-3.jpg" alt="Beitou Library" class="gallery-image">
+                                <img src="images/day2-4.jpg" alt="Hot Spring Park" class="gallery-image">
+                                <img src="images/day2-5.jpg" alt="Free exploration" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day2', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day2', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day2', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day2', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day2', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day2', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day2', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-3">
+                <div class="day-number">3</div>
+                <div class="day-content">
+                    <h3>🏮 Day 3: August 4 (Monday) — Magical Jiufen</h3>
+                    <ul>
+                        <li>Release sky lanterns and visit waterfalls in Pingxi</li>
+                        <li>Explore the lantern-lit charm of Jiufen Old Street</li>
+                        <li>Experience the Spirited Away atmosphere</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day3">
+                                <img src="images/day3-1.jpg" alt="Sky lanterns" class="gallery-image">
+                                <img src="images/day3-2.jpg" alt="Pingxi waterfalls" class="gallery-image">
+                                <img src="images/day3-3.jpg" alt="Jiufen Old Street" class="gallery-image">
+                                <img src="images/day3-4.jpg" alt="Lantern-lit streets" class="gallery-image">
+                                <img src="images/day3-5.jpg" alt="Spirited Away views" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day3', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day3', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day3', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day3', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day3', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day3', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day3', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-4">
+                <div class="day-number">4</div>
+                <div class="day-content">
+                    <h3>🎭 Day 4: August 5 (Tuesday) — Rest and Urban Wandering</h3>
+                    <ul>
+                        <li>Relaxing morning</li>
+                        <li>Optional: Huashan 1914 Creative Park</li>
+                        <li>Shi-Men Ting: mango shave ice, shopping, boba, claw machines!</li>
+                        <li>Night market exploration</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day4">
+                                <img src="images/day4-1.jpg" alt="Relaxing morning" class="gallery-image">
+                                <img src="images/day4-2.jpg" alt="Huashan 1914" class="gallery-image">
+                                <img src="images/day4-3.jpg" alt="Shi-Men Ting" class="gallery-image">
+                                <img src="images/day4-4.jpg" alt="Night market" class="gallery-image">
+                                <img src="images/day4-5.jpg" alt="Street food" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day4', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day4', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day4', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day4', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day4', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day4', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day4', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-5">
+                <div class="day-number">5</div>
+                <div class="day-content">
+                    <h3>😊 Day 5: August 6 (Wednesday) — Free Day/TBD</h3>
+                    <ul>
+                        <li>Optional morning U-Bike ride</li>
+                        <li>Maybe Tamsui Old Street Fort Santo Domingo</li>
+                        <li>Flexible scheduling for personal preferences</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day5">
+                                <img src="images/day5-1.jpg" alt="U-Bike ride" class="gallery-image">
+                                <img src="images/day5-2.jpg" alt="Tamsui Old Street" class="gallery-image">
+                                <img src="images/day5-3.jpg" alt="Fort Santo Domingo" class="gallery-image">
+                                <img src="images/day5-4.jpg" alt="Free exploration" class="gallery-image">
+                                <img src="images/day5-5.jpg" alt="Personal time" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day5', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day5', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day5', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day5', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day5', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day5', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day5', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-6">
+                <div class="day-number">6</div>
+                <div class="day-content">
+                    <h3>🏛 Day 6: August 7 (Thursday) — Palaces & Parks</h3>
+                    <ul>
+                        <li>Human Rights Museum</li>
+                        <li>Maokong Gondola into the tea mountains (weather permitting)</li>
+                        <li>Low-key cultural preparation for overnight trip</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day6">
+                                <img src="images/day6-1.jpg" alt="Human Rights Museum" class="gallery-image">
+                                <img src="images/day6-2.jpg" alt="Maokong Gondola" class="gallery-image">
+                                <img src="images/day6-3.jpg" alt="Tea mountains" class="gallery-image">
+                                <img src="images/day6-4.jpg" alt="Cultural preparation" class="gallery-image">
+                                <img src="images/day6-5.jpg" alt="Evening rest" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day6', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day6', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day6', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day6', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day6', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day6', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day6', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-7">
+                <div class="day-number">7</div>
+                <div class="day-content">
+                    <h3>🚆 Day 7: August 8 (Friday) — Off to Tainan!</h3>
+                    <ul>
+                        <li>Travel south to Taiwan's ancient capital</li>
+                        <li>Fort Provintia exploration</li>
+                        <li>Confucius Temple visit</li>
+                        <li>Anping Tree House & Harbor walk (ice cream!)</li>
+                        <li>📍 Just Sleep Tainan</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day7">
+                                <img src="images/day7-1.jpg" alt="Travel to Tainan" class="gallery-image">
+                                <img src="images/day7-2.jpg" alt="Fort Provintia" class="gallery-image">
+                                <img src="images/day7-3.jpg" alt="Confucius Temple" class="gallery-image">
+                                <img src="images/day7-4.jpg" alt="Anping Tree House" class="gallery-image">
+                                <img src="images/day7-5.jpg" alt="Harbor walk" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day7', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day7', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day7', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day7', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day7', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day7', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day7', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-8">
+                <div class="day-number">8</div>
+                <div class="day-content">
+                    <h3>🎶 Day 8: August 9 (Saturday) — Culture & Return</h3>
+                    <ul>
+                        <li>Ten Drum Cultural Village</li>
+                        <li>Chimei Museum art immersion</li>
+                        <li>Travel back to Taipei by evening</li>
+                        <li>High speed rail option (advance booking required)</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day8">
+                                <img src="images/day8-1.jpg" alt="Ten Drum Cultural Village" class="gallery-image">
+                                <img src="images/day8-2.jpg" alt="Drum performance" class="gallery-image">
+                                <img src="images/day8-3.jpg" alt="Chimei Museum" class="gallery-image">
+                                <img src="images/day8-4.jpg" alt="Art immersion" class="gallery-image">
+                                <img src="images/day8-5.jpg" alt="Return to Taipei" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day8', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day8', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day8', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day8', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day8', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day8', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day8', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-9">
+                <div class="day-number">9</div>
+                <div class="day-content">
+                    <h3>🧵 Day 9: August 10 (Sunday) — Creative Pulse</h3>
+                    <ul>
+                        <li>Taipei 101 Observation Deck (weather permitting)</li>
+                        <li>Mitsukoshi Shopping Area</li>
+                        <li>Songshan Cultural and Creative Park</li>
+                        <li>Raohe Night Market with the dog stores</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day9">
+                                <img src="images/day9-1.jpg" alt="Taipei 101 Observation Deck" class="gallery-image">
+                                <img src="images/day9-2.jpg" alt="Mitsukoshi Shopping" class="gallery-image">
+                                <img src="images/day9-3.jpg" alt="Songshan Creative Park" class="gallery-image">
+                                <img src="images/day9-4.jpg" alt="Raohe Night Market" class="gallery-image">
+                                <img src="images/day9-5.jpg" alt="Dog stores" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day9', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day9', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day9', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day9', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day9', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day9', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day9', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-10">
+                <div class="day-number">10</div>
+                <div class="day-content">
+                    <h3>🌾 Day 10: August 11 (Monday) — Yilan Day Trip</h3>
+                    <ul>
+                        <li>Head to Yilan for a change of pace</li>
+                        <li>Kavalan Distillery tour (adults enjoy, kids welcome)</li>
+                        <li>Natural indigo dyeing experience</li>
+                        <li>Hot spring relaxation</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day10">
+                                <img src="images/day10-1.jpg" alt="Yilan countryside" class="gallery-image">
+                                <img src="images/day10-2.jpg" alt="Kavalan Distillery" class="gallery-image">
+                                <img src="images/day10-3.jpg" alt="Indigo dyeing" class="gallery-image">
+                                <img src="images/day10-4.jpg" alt="Hot spring" class="gallery-image">
+                                <img src="images/day10-5.jpg" alt="Relaxation time" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day10', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day10', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day10', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day10', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day10', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day10', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day10', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-11">
+                <div class="day-number">11</div>
+                <div class="day-content">
+                    <h3>🏖 Day 11: August 12 (Tuesday) — Beach & Heritage</h3>
+                    <ul>
+                        <li>Relax at Baishawan Beach</li>
+                        <li>Enjoy the north coast swimming destination</li>
+                        <li>Beach activities and relaxation</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day11">
+                                <img src="images/day11-1.jpg" alt="Baishawan Beach" class="gallery-image">
+                                <img src="images/day11-2.jpg" alt="North coast views" class="gallery-image">
+                                <img src="images/day11-3.jpg" alt="Swimming" class="gallery-image">
+                                <img src="images/day11-4.jpg" alt="Beach activities" class="gallery-image">
+                                <img src="images/day11-5.jpg" alt="Beach relaxation" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day11', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day11', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day11', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day11', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day11', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day11', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day11', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-12">
+                <div class="day-number">12</div>
+                <div class="day-content">
+                    <h3>😊 Day 12: August 13 (Wednesday) — Free Day/TBD</h3>
+                    <ul>
+                        <li>Optional morning U-Bike ride</li>
+                        <li>Maybe Tamsui Old Street Fort Santo Domingo</li>
+                        <li>Personal exploration time</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day12">
+                                <img src="images/day12-1.jpg" alt="U-Bike ride" class="gallery-image">
+                                <img src="images/day12-2.jpg" alt="Tamsui Old Street" class="gallery-image">
+                                <img src="images/day12-3.jpg" alt="Fort Santo Domingo" class="gallery-image">
+                                <img src="images/day12-4.jpg" alt="Personal exploration" class="gallery-image">
+                                <img src="images/day12-5.jpg" alt="Free time" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day12', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day12', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day12', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day12', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day12', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day12', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day12', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-13">
+                <div class="day-number">13</div>
+                <div class="day-content">
+                    <h3>🍜 Day 13: August 14 (Thursday) — Cook Like a Local</h3>
+                    <ul>
+                        <li>Hands-on cooking class at CookInn Taiwan</li>
+                        <li>Dihua Street exploration</li>
+                        <li>Shrimping experience</li>
+                        <li>Lungshan Temple visit</li>
+                        <li>Snake Alley Huaxi Night Market</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day13">
+                                <img src="images/day13-1.jpg" alt="Cooking class" class="gallery-image">
+                                <img src="images/day13-2.jpg" alt="Dihua Street" class="gallery-image">
+                                <img src="images/day13-3.jpg" alt="Shrimping" class="gallery-image">
+                                <img src="images/day13-4.jpg" alt="Lungshan Temple" class="gallery-image">
+                                <img src="images/day13-5.jpg" alt="Snake Alley Night Market" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day13', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day13', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day13', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day13', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day13', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day13', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day13', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-item" id="day-14">
+                <div class="day-number">14</div>
+                <div class="day-content">
+                    <h3>✈️ Day 14: August 15 (Friday) — Goodbye for Now</h3>
+                    <ul>
+                        <li>Final time in Taipei for packing</li>
+                        <li>Last-minute treats and souvenir shopping</li>
+                        <li>Relaxing departure preparation</li>
+                        <li>📍 Taipei Marriott Hotel</li>
+                    </ul>
+                    <div class="photo-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery-day14">
+                                <img src="images/day14-1.jpg" alt="Packing time" class="gallery-image">
+                                <img src="images/day14-2.jpg" alt="Souvenir shopping" class="gallery-image">
+                                <img src="images/day14-3.jpg" alt="Last treats" class="gallery-image">
+                                <img src="images/day14-4.jpg" alt="Departure preparation" class="gallery-image">
+                                <img src="images/day14-5.jpg" alt="Goodbye Taiwan" class="gallery-image">
+                            </div>
+                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day14', -1)">‹</button>
+                            <button class="gallery-nav gallery-next" onclick="changeSlide('day14', 1)">›</button>
+                        </div>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="currentSlide('day14', 1)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day14', 2)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day14', 3)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day14', 4)"></span>
+                            <span class="gallery-dot" onclick="currentSlide('day14', 5)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="practical-info">
+            <div class="info-card">
+                <h3>🚕 Transportation</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>• Group transportation arranged for planned activities</li>
+                    <li>• U-Bike rentals available for free exploration days</li>
+                    <li>• Uber works well in Taiwan for individual trips</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🏨 Accommodation</h3>
+                <p><strong>Taipei Marriott Hotel</strong></p>
+                <p>No. 199, Lequn 2nd Rd, Zhongshan District, Taipei City, 10491</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>• <strong>5,500 TWD</strong> per night</li>
+                </ul>
+                <br>
+                <p><strong>Just Sleep Tainan Hotel</strong></p>
+                <p>No. 300, Section 2, Wenhua Rd, Rende District, Tainan City, 717</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>• Two beds: <strong>2,900 TWD</strong> per night</li>
+                    <li>• Two beds + sofa bed: <strong>3,700 TWD</strong> per night</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>📅 Additional Activities</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>• Ice skating</li>
+                    <li>• Swimming at Welly's mom's place</li>
+                    <li>• 13-mile bike ride to Tamsui</li>
+                    <li>• National Palace Museum</li>
+                    <li>• Yingge Ceramics Street</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card room-assignments">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Room Assignments</h2>
+            
+            <div class="room-tabs">
+                <button class="room-tab active" onclick="showRoomTab('tab1')">8/2-8/6</button>
+                <button class="room-tab" onclick="showRoomTab('tab2')">8/7</button>
+                <button class="room-tab" onclick="showRoomTab('tab3')">8/8</button>
+                <button class="room-tab" onclick="showRoomTab('tab4')">8/10-15</button>
+            </div>
+
+            <div id="tab1" class="room-content active">
+                <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">8/2-8/6 Taipei Marriott</h3>
+                <div class="room-table-container">
+                    <table class="room-table">
+                        <thead>
+                            <tr>
+                                <th>Room Number</th>
+                                <th>Name 1</th>
+                                <th>Name 2</th>
+                                <th>Name 3</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jackie Requa</td>
+                                <td>Matteo Requa</td>
+                                <td>-</td>
+                                <td>Early Check in</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Julian Requa</td>
+                                <td>Henry Calvert</td>
+                                <td>-</td>
+                                <td>Early Check in</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Wyatt Yang (OB)</td>
+                                <td>Owen Snyder (OB/POB)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Dakota Yang</td>
+                                <td>Lauren Nakano</td>
+                                <td>Linda Nakano</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Welly Yang</td>
+                                <td>Dina Morishita</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Kathleen Calvert</td>
+                                <td>Joe Calvert</td>
+                                <td>-</td>
+                                <td>Early Check in</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Jack Calvert</td>
+                                <td>Logan Nakano</td>
+                                <td>-</td>
+                                <td>Early Check in</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab2" class="room-content">
+                <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">8/7 Taipei Marriott</h3>
+                <div class="room-table-container">
+                    <table class="room-table">
+                        <thead>
+                            <tr>
+                                <th>Room Number</th>
+                                <th>Name 1</th>
+                                <th>Name 2</th>
+                                <th>Name 3</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jackie Requa</td>
+                                <td>Matteo Requa</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Julian Requa</td>
+                                <td>Henry Calvert</td>
+                                <td>Aaron Yeom</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Wyatt Yang (OB)</td>
+                                <td>Owen Snyder (OB/POB)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Dakota Yang</td>
+                                <td>Lauren Nakano</td>
+                                <td>Averie Yeom</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Welly Yang</td>
+                                <td>Dina Morishita</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Kathleen Calvert</td>
+                                <td>Joe Calvert</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Jack Calvert</td>
+                                <td>Logan Nakano</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Jessica Chung</td>
+                                <td>Linda Nakano</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab3" class="room-content">
+                <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">8/8 Taipei Marriott</h3>
+                <div class="room-table-container">
+                    <table class="room-table">
+                        <thead>
+                            <tr>
+                                <th>Room Number</th>
+                                <th>Name 1</th>
+                                <th>Name 2</th>
+                                <th>Name 3</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jackie Requa</td>
+                                <td>Matteo Requa</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Julian Requa</td>
+                                <td>Henry Calvert</td>
+                                <td>Aaron Yeom</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Wyatt Yang (OB)</td>
+                                <td>Owen Snyder (OB/POB)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Dakota Yang</td>
+                                <td>Lauren Nakano</td>
+                                <td>Averie Yeom</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Welly Yang</td>
+                                <td>Dina Morishita</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Kathleen Calvert</td>
+                                <td>Joe Calvert</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Jack Calvert</td>
+                                <td>Logan Nakano</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Jessica Chung</td>
+                                <td>Linda Nakano</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Annabelle Tiffin</td>
+                                <td>Finn Tiffin</td>
+                                <td>Joanne Tiffin</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab4" class="room-content">
+                <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">8/10-15 Taipei Marriott</h3>
+                <div class="checkout-note" style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+                    <p style="margin: 0; color: #1976d2; font-weight: bold;">📋 Note: The following guests will check out on 8/10</p>
+                </div>
+                <div class="room-table-container">
+                    <table class="room-table">
+                        <thead>
+                            <tr>
+                                <th>Room Number</th>
+                                <th>Name 1</th>
+                                <th>Name 2</th>
+                                <th>Name 3</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jackie Requa</td>
+                                <td>Matteo Requa</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Julian Requa</td>
+                                <td>Aaron Yeom</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Wyatt Yang (OB)</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Dakota Yang</td>
+                                <td>Averie Yeom</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Welly Yang</td>
+                                <td>Dina Morishita</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Jessica Chung</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Annabelle Tiffin</td>
+                                <td>Finn Tiffin</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Joanne Tiffin</td>
+                                <td>Phil Tiffin</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr class="checkout-row">
+                                <td colspan="5" style="background: #e3f2fd; color: #1976d2; font-weight: bold; text-align: center; padding: 15px;">8/10 Check Out: Joe Calvert, Kathleen Calvert, Jack Calvert, Henry Calvert, Owen Snyder (OB/POB), Lauren Nakano, Logan Nakano, Linda Nakano</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Stay Connected!</h2>
+            <p>Join our group chats and shared expense tracking</p>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>WhatsApp Group:</strong> For daily updates and coordination</p>
+                <p><strong>Splitwise:</strong> One paying person per party should join for meal sharing</p>
+                <p><strong>Google Calendar:</strong> Add the trip calendar for easy schedule tracking</p>
+            </div>
+
+            <div class="qr-codes">
+                <div class="qr-code" onclick="window.open('https://chat.whatsapp.com/KvJ2T2E547l9hFCuot4QbP?mode=r_t', '_blank')" style="cursor: pointer;">
+                    <h4>WhatsApp</h4>
+                    <img src="images/whatsapp-qr.png" alt="WhatsApp QR Code" style="width: 150px; height: 150px; margin: 10px auto; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Click to Join</p>
+                </div>
+                <div class="qr-code" onclick="window.open('https://www.splitwise.com/join/WzfVFcnuEVo+1pn2tm?v=e', '_blank')" style="cursor: pointer;">
+                    <h4>Splitwise</h4>
+                    <img src="images/splitwise-qr.png" alt="Splitwise QR Code" style="width: 150px; height: 150px; margin: 10px auto; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Click to Join</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 1.1rem;">We're so happy to be making memories together!</p>
+        </div>
+    </div>
+
+    <script>
+        let slideIndexes = {};
+
+        function initializeGalleries() {
+            const days = ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7', 'day8', 'day9', 'day10', 'day11', 'day12', 'day13', 'day14'];
+            days.forEach(day => {
+                slideIndexes[day] = 1;
+                showSlide(day);
+            });
+        }
+
+        function changeSlide(dayId, direction) {
+            slideIndexes[dayId] += direction;
+            
+            if (slideIndexes[dayId] > 5) slideIndexes[dayId] = 1;
+            if (slideIndexes[dayId] < 1) slideIndexes[dayId] = 5;
+            
+            showSlide(dayId);
+        }
+
+        function currentSlide(dayId, slideNumber) {
+            slideIndexes[dayId] = slideNumber;
+            showSlide(dayId);
+        }
+
+        function showSlide(dayId) {
+            const gallery = document.getElementById(`gallery-${dayId}`);
+            if (!gallery) return;
+            
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.parentNode.parentNode.querySelectorAll('.gallery-dot');
+            const currentIndex = slideIndexes[dayId] - 1;
+            
+            // Define position classes for each image relative to current
+            const positions = ['center', 'right', 'far-right', 'far-left', 'left'];
+            
+            images.forEach((img, index) => {
+                // Remove all position classes
+                img.classList.remove('center', 'left', 'right', 'far-left', 'far-right');
+                
+                // Calculate relative position from current index
+                let relativePos = (index - currentIndex + 5) % 5;
+                
+                // Add appropriate position class
+                img.classList.add(positions[relativePos]);
+            });
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToDay(dayId) {
+            const dayElement = document.getElementById(`day-${dayId.replace('day', '')}`);
+            if (dayElement) {
+                dayElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Add highlight effect
+                dayElement.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    dayElement.style.transform = 'scale(1)';
+                }, 500);
+            }
+            // Close day selector menu after navigation
+            const menu = document.getElementById('daySelectorMenu');
+            if (menu) {
+                menu.style.display = 'none';
+            }
+        }
+
+        function scrollToContact() {
+            const contactSection = document.querySelector('.contact-section');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Add highlight effect
+                contactSection.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    contactSection.style.transform = 'scale(1)';
+                }, 500);
+            }
+            // Close day selector menu after navigation
+            const menu = document.getElementById('daySelectorMenu');
+            if (menu) {
+                menu.style.display = 'none';
+            }
+        }
+
+        function scrollToRoomAssignments() {
+            const roomSection = document.querySelector('.room-assignments');
+            if (roomSection) {
+                roomSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Add highlight effect
+                roomSection.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    roomSection.style.transform = 'scale(1)';
+                }, 500);
+            }
+            // Close day selector menu after navigation
+            const menu = document.getElementById('daySelectorMenu');
+            if (menu) {
+                menu.style.display = 'none';
+            }
+        }
+
+        function toggleDaySelector() {
+            const menu = document.getElementById('daySelectorMenu');
+            if (menu) {
+                if (menu.style.display === 'none') {
+                    menu.style.display = 'block';
+                } else {
+                    menu.style.display = 'none';
+                }
+            }
+        }
+
+        // Close day selector when clicking outside
+        document.addEventListener('click', function(event) {
+            const daySelector = document.querySelector('.floating-day-selector-container');
+            const menu = document.getElementById('daySelectorMenu');
+            
+            if (daySelector && menu && !daySelector.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
+
+        function showRoomTab(tabId) {
+            // Hide all content
+            const allContents = document.querySelectorAll('.room-content');
+            allContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active state from all tabs
+            const allTabs = document.querySelectorAll('.room-tab');
+            allTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGalleries();
+            
+            // Add smooth scroll for day items
+            document.querySelectorAll('.day-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (!e.target.closest('.photo-gallery')) {
+                        this.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1.02)';
+                        }, 200);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
