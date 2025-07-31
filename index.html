@@ -12,6 +12,39 @@
             box-sizing: border-box;
         }
 
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(102, 126, 234, 0.3));
+            backdrop-filter: blur(5px);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.65rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 20px;
+            position: relative;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer p {
+            margin: 0;
+            line-height: 1.2;
+            font-weight: 200;
+            letter-spacing: 0.3px;
+            opacity: 0.8;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -922,6 +955,12 @@
             .room-table td:first-child {
                 min-width: 50px;
             }
+            
+            .footer {
+                padding: 6px 12px;
+                font-size: 0.55rem;
+                margin-top: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1091,6 +1130,12 @@
             .room-table td:first-child {
                 min-width: 40px;
             }
+            
+            .footer {
+                padding: 5px 10px;
+                font-size: 0.5rem;
+                margin-top: 12px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1145,6 +1190,12 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+            
+            .footer {
+                padding: 4px 8px;
+                font-size: 0.45rem;
+                margin-top: 10px;
+            }
         }
 
         @media (max-width: 320px) {
@@ -1189,6 +1240,12 @@
                 padding: 2px 4px;
                 max-width: 40px;
             }
+            
+            .footer {
+                padding: 3px 6px;
+                font-size: 0.4rem;
+                margin-top: 8px;
+            }
         }
     </style>
 </head>
@@ -1209,7 +1266,7 @@
                 <button class="day-option" onclick="scrollToDay('day2')">Day 2 - Mountains</button>
                 <button class="day-option" onclick="scrollToDay('day3')">Day 3 - Jiufen</button>
                 <button class="day-option" onclick="scrollToDay('day4')">Day 4 - Urban</button>
-                <button class="day-option" onclick="scrollToDay('day5')">Day 5 - Free Day</button>
+                <button class="day-option" onclick="scrollToDay('day5')">Day 5 - Cooking</button>
                 <button class="day-option" onclick="scrollToDay('day6')">Day 6 - Palaces</button>
                 <button class="day-option" onclick="scrollToDay('day7')">Day 7 - Tainan</button>
                 <button class="day-option" onclick="scrollToDay('day8')">Day 8 - Culture</button>
@@ -1217,7 +1274,7 @@
                 <button class="day-option" onclick="scrollToDay('day10')">Day 10 - Yilan</button>
                 <button class="day-option" onclick="scrollToDay('day11')">Day 11 - Beach</button>
                 <button class="day-option" onclick="scrollToDay('day12')">Day 12 - Free Day</button>
-                <button class="day-option" onclick="scrollToDay('day13')">Day 13 - Cooking</button>
+                <button class="day-option" onclick="scrollToDay('day13')">Day 13 - Free Day</button>
                 <button class="day-option" onclick="scrollToDay('day14')">Day 14 - Goodbye</button>
                 <button class="day-option" onclick="scrollToRoomAssignments()">Room Assignments</button>
                 <button class="day-option" onclick="scrollToContact()">Contact Info</button>
@@ -1266,8 +1323,8 @@
                     <p>Rest and Urban Wandering</p>
                 </div>
                 <div class="overview-card day-index" onclick="scrollToDay('day5')">
-                    <h3>😊 Day 5</h3>
-                    <p>Free Day/TBD</p>
+                    <h3>🍜 Day 5</h3>
+                    <p>Cook Like a Local</p>
                 </div>
                 <div class="overview-card day-index" onclick="scrollToDay('day6')">
                     <h3>🏛 Day 6</h3>
@@ -1298,8 +1355,8 @@
                     <p>Free Day/TBD</p>
                 </div>
                 <div class="overview-card day-index" onclick="scrollToDay('day13')">
-                    <h3>🍜 Day 13</h3>
-                    <p>Cook Like a Local</p>
+                    <h3>😊 Day 13</h3>
+                    <p>Free Day/TBD</p>
                 </div>
                 <div class="overview-card day-index" onclick="scrollToDay('day14')">
                     <h3>✈️ Day 14</h3>
@@ -1457,11 +1514,13 @@
             <div class="day-item" id="day-5">
                 <div class="day-number">5</div>
                 <div class="day-content">
-                    <h3>😊 Day 5: August 6 (Wednesday) — Free Day/TBD</h3>
+                    <h3>🍜 Day 5: August 6 (Wednesday) — Cook Like a Local</h3>
                     <ul>
-                        <li>Optional morning U-Bike ride</li>
-                        <li>Maybe <a href="https://maps.app.goo.gl/5TMyjzd3aDWdCy24A" target="_blank" style="color: white; text-decoration: underline;">Tamsui Old Street</a> <a href="https://maps.app.goo.gl/BWjhV3sB6FWV66tY8" target="_blank" style="color: white; text-decoration: underline;">Fort Santo Domingo</a></li>
-                        <li>Flexible scheduling for personal preferences</li>
+                        <li>Hands-on cooking class at <a href="https://maps.app.goo.gl/Py7yN9FTqwiaWJaN6" target="_blank" style="color: white; text-decoration: underline;">Cooking Fun Taiwan</a></li>
+                        <li><a href="https://maps.app.goo.gl/58KJn5m9EmxVt9DcA" target="_blank" style="color: white; text-decoration: underline;">Dihua Street</a> exploration</li>
+                        <li>Shrimping experience</li>
+                        <li><a href="https://maps.app.goo.gl/zoe52P9athDP1idW7" target="_blank" style="color: white; text-decoration: underline;">Lungshan Temple</a> visit</li>
+                        <li>Snake Alley Huaxi Night Market</li>
                         <li>📍 Taipei Marriott Hotel</li>
                     </ul>
                     <div class="photo-gallery">
@@ -1705,13 +1764,11 @@
             <div class="day-item" id="day-13">
                 <div class="day-number">13</div>
                 <div class="day-content">
-                    <h3>🍜 Day 13: August 14 (Thursday) — Cook Like a Local</h3>
+                    <h3>😊 Day 13: August 14 (Thursday) — Free Day/TBD</h3>
                     <ul>
-                        <li>Hands-on cooking class at <a href="https://maps.app.goo.gl/L18EHUAJFiNCnRGD6" target="_blank" style="color: white; text-decoration: underline;">CookInn Taiwan</a></li>
-                        <li><a href="https://maps.app.goo.gl/58KJn5m9EmxVt9DcA" target="_blank" style="color: white; text-decoration: underline;">Dihua Street</a> exploration</li>
-                        <li>Shrimping experience</li>
-                        <li><a href="https://maps.app.goo.gl/zoe52P9athDP1idW7" target="_blank" style="color: white; text-decoration: underline;">Lungshan Temple</a> visit</li>
-                        <li>Snake Alley Huaxi Night Market</li>
+                        <li>Optional morning U-Bike ride</li>
+                        <li>Maybe <a href="https://maps.app.goo.gl/5TMyjzd3aDWdCy24A" target="_blank" style="color: white; text-decoration: underline;">Tamsui Old Street</a> <a href="https://maps.app.goo.gl/BWjhV3sB6FWV66tY8" target="_blank" style="color: white; text-decoration: underline;">Fort Santo Domingo</a></li>
+                        <li>Flexible scheduling for personal preferences</li>
                         <li>📍 Taipei Marriott Hotel</li>
                     </ul>
                     <div class="photo-gallery">
@@ -2137,6 +2194,10 @@
             
             <p style="margin-top: 30px; font-size: 1.1rem;">We're so happy to be making memories together!</p>
         </div>
+    </div>
+
+    <div class="footer">
+        <p>Created with care by Johnny (Tzu-Yang) Ho · Formosa Studio · For August 2025 Trip · © All rights reserved.</p>
     </div>
 
     <script>
