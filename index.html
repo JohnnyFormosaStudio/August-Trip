@@ -680,6 +680,7 @@
         .room-content {
             display: none;
             animation: fadeIn 0.5s ease-in;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .room-content.active {
@@ -1293,17 +1294,6 @@
         </div>
 
         <div class="welcome-letter">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Welcome Letter</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">We're so excited to have you join us for this unforgettable journey to Taiwan! This trip is all about meaningful exploration, immersive cultural experiences, and most importantly—fun, connection, and adventure for everyone in the group.</p>
-            
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">We've put together a mix of engaging, interactive activities that will allow everyone to learn about Taiwan and have fun. We want to focus on giving the kids opportunities to explore independently, build confidence, and experience the incredible safety and friendliness that Taiwan is known for.</p>
-            
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">At the same time, we know how important flexibility is when traveling, so the schedule includes plenty of free time to relax, recharge, or go off and explore on your own. We want you to feel like you're on vacation too!!</p>
-            
-            <p style="text-align: center; font-size: 1.2rem; margin-top: 30px;"><strong>With excitement,<br>Dina and Welly</strong></p>
-        </div>
-
-        <div class="welcome-letter">
             <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Trip Overview</h2>
             <div class="trip-overview">
                 <div class="overview-card day-index" onclick="scrollToDay('day1')">
@@ -1376,184 +1366,8 @@
         <div class="itinerary">
             <h2 style="text-align: center; margin-bottom: 40px; color: #667eea; font-size: 2.5rem;">Daily Itinerary</h2>
             
-            <div class="day-item" id="day-1">
-                <div class="day-number">1</div>
-                <div class="day-content">
-                    <h3>🌇 August 2 (Saturday) — Welcome to Taipei</h3>
-                    
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; margin: 15px 0; backdrop-filter: blur(5px);">
-                        <h4 style="color: white; margin-bottom: 10px; font-size: 1rem; text-align: center;">✈️ Flight Arrivals</h4>
-                        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                            
-                            <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; min-width: 280px; flex: 1; max-width: 400px;">
-                                <div style="font-weight: bold; color: #FFE66D; margin-bottom: 8px;">JX001 - 5:05 AM</div>
-                                <ul style="font-size: 0.85rem; line-height: 1.4; color: rgba(255,255,255,0.9); margin: 0; padding-left: 15px; list-style-type: disc; columns: 3; column-gap: 10px;">
-                                    <li>Jackie</li>
-                                    <li>Julien</li>
-                                    <li>Matteo</li>
-                                    <li>Wyatt</li>
-                                    <li>Dakota</li>
-                                    <li>Welly</li>
-                                    <li>Dina</li>
-                                    <li>Kathleen</li>
-                                    <li>Joe</li>
-                                    <li>Jack</li>
-                                    <li>Henry</li>
-                                    <li>Owen</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; min-width: 280px; flex: 1; max-width: 400px;">
-                                <div style="font-weight: bold; color: #FFE66D; margin-bottom: 8px;">CI-157 - 3:00 PM</div>
-                                <ul style="font-size: 0.85rem; line-height: 1.4; color: rgba(255,255,255,0.9); margin: 0; padding-left: 15px; list-style-type: disc;">
-                                    <li>Logan</li>
-                                    <li>Lauren</li>
-                                    <li>Linda</li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <ul>
-                        <li><strong>7:00:</strong> Settle into rooms and explore Dazhi neighborhood</li>
-                        <li><strong>10:00 AM Departure:</strong> Arrival in Taipei + breakfast at the hotel</li>
-                        <li><strong>10:00-12:00:</strong> <a href="https://maps.app.goo.gl/mogZk8yjsK1GcjAJ9" target="_blank" style="color: white; text-decoration: underline;">National Palace Museum</a>/<a href="https://maps.app.goo.gl/Cd6zRpzuLVBhS1ph6" target="_blank" style="color: white; text-decoration: underline;">Chiang Kai-Shek Shilin Residence</a></li>
-                        <li><strong>12:20~:</strong> Shrimping adventure</li>
-                        <li>Optional: <a href="https://maps.app.goo.gl/uiDRjL75Xzrvqgyc9" target="_blank" style="color: white; text-decoration: underline;">The Grand Hotel</a></li>
-                        <li><strong>~</strong>Return to hotel for some rest</li>
-                        <li>Early Evening Options: Foot Massage, Beef Noodle, Night Market</li>
-                        <li>📍 Taipei Marriott Hotel</li>
-                    </ul>
-                    <div class="photo-gallery">
-                        <div class="gallery-container">
-                            <div class="gallery-images" id="gallery-day1">
-                                <img src="images/day1-1.jpg" alt="Taipei arrival" class="gallery-image">
-                                <img src="images/day1-2.jpg" alt="Hotel breakfast" class="gallery-image">
-                                <img src="images/day1-3.jpg" alt="Dazhi exploration" class="gallery-image">
-                                <img src="images/day1-4.jpg" alt="Shrimping adventure" class="gallery-image">
-                                <img src="images/day1-5.jpg" alt="Taipei 101 evening" class="gallery-image">
-                            </div>
-                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day1', -1)">‹</button>
-                            <button class="gallery-nav gallery-next" onclick="changeSlide('day1', 1)">›</button>
-                        </div>
-                        <div class="gallery-dots">
-                            <span class="gallery-dot active" onclick="currentSlide('day1', 1)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day1', 2)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day1', 3)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day1', 4)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day1', 5)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-item" id="day-2">
-                <div class="day-number">2</div>
-                <div class="day-content">
-                    <h3>🌿 August 3 (Sunday) — Mountains & Markets</h3>
-                    <ul>
-                        <li><strong>8:00 AM Departure:</strong> Scenic drive through Yangmingshan National Park</li>
-                        <li><strong>13:00:</strong> Visit the <a href="https://maps.app.goo.gl/qGS2Q8ndGQNtCYDHA" target="_blank" style="color: white; text-decoration: underline;">alpacas</a>!!</li>
-                        <li><strong>15:00:</strong> <a href="https://maps.app.goo.gl/aehjReWmT1qchAto9" target="_blank" style="color: white; text-decoration: underline;">Beitou Library</a> / Hot Spring Park</li>
-                        <li><strong>16:30:</strong> Group outing to Taipei 101 in the evening</li>
-                        <li>Free time to relax or explore</li>
-                        <li><strong>19:00:</strong> Dinner - Kanpai Classic</li>
-                        <li>📍 Taipei Marriott Hotel</li>
-                    </ul>
-                    <div class="photo-gallery">
-                        <div class="gallery-container">
-                            <div class="gallery-images" id="gallery-day2">
-                                <img src="images/day2-1.jpg" alt="Yangmingshan drive" class="gallery-image">
-                                <img src="images/day2-2.jpg" alt="Alpaca farm" class="gallery-image">
-                                <img src="images/day2-3.jpg" alt="Beitou Library" class="gallery-image">
-                                <img src="images/day2-4.jpg" alt="Hot Spring Park" class="gallery-image">
-                                <img src="images/day2-5.jpg" alt="Free exploration" class="gallery-image">
-                            </div>
-                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day2', -1)">‹</button>
-                            <button class="gallery-nav gallery-next" onclick="changeSlide('day2', 1)">›</button>
-                        </div>
-                        <div class="gallery-dots">
-                            <span class="gallery-dot active" onclick="currentSlide('day2', 1)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day2', 2)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day2', 3)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day2', 4)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day2', 5)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-item" id="day-3">
-                <div class="day-number">3</div>
-                <div class="day-content">
-                    <h3>🏮 August 4 (Monday) — Magical Jiufen</h3>
-                    <ul>
-                        <li><strong>9:30 AM Departure:</strong> Head to Pingxi for sky lantern adventure</li>
-                        <li><strong>10:30~13:30:</strong> Release sky lanterns and visit waterfalls in <a href="https://maps.app.goo.gl/bZpbpPuUb1JqJvSb7" target="_blank" style="color: white; text-decoration: underline;">Pingxi</a></li>
-                        <li><strong>14:20~16:00:</strong> Explore the lantern-lit charm of <a href="https://maps.app.goo.gl/GNmaVGAvDsdR4wHu7" target="_blank" style="color: white; text-decoration: underline;">Jiufen Old Street</a></li>
-                        <li>Experience the Spirited Away atmosphere</li>
-                        <li>📍 Taipei Marriott Hotel</li>
-                    </ul>
-                    <div class="photo-gallery">
-                        <div class="gallery-container">
-                            <div class="gallery-images" id="gallery-day3">
-                                <img src="images/day3-1.jpg" alt="Sky lanterns" class="gallery-image">
-                                <img src="images/day3-2.jpg" alt="Pingxi waterfalls" class="gallery-image">
-                                <img src="images/day3-3.jpg" alt="Jiufen Old Street" class="gallery-image">
-                                <img src="images/day3-4.jpg" alt="Lantern-lit streets" class="gallery-image">
-                                <img src="images/day3-5.jpg" alt="Spirited Away views" class="gallery-image">
-                            </div>
-                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day3', -1)">‹</button>
-                            <button class="gallery-nav gallery-next" onclick="changeSlide('day3', 1)">›</button>
-                        </div>
-                        <div class="gallery-dots">
-                            <span class="gallery-dot active" onclick="currentSlide('day3', 1)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day3', 2)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day3', 3)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day3', 4)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day3', 5)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-item" id="day-4">
-                <div class="day-number">4</div>
-                <div class="day-content">
-                    <h3>🎭 August 5 (Tuesday) — Rest and Urban Wandering</h3>
-                    <ul>
-                        <li><strong>9:30 AM Departure</strong></li>
-                        <li>10:30 Presidential Office Building</li>
-                        <li><strong>13:00~:</strong> <a href="https://maps.app.goo.gl/XxFSYZyyCpBcUV5W6" target="_blank" style="color: white; text-decoration: underline;">Shi-Men Ting</a>: mango shave ice, shopping, boba, claw machines!</li>
-                        <li>Optional: <a href="https://maps.app.goo.gl/KgT7VNfQMP1u8Fyf8" target="_blank" style="color: white; text-decoration: underline;">Huashan 1914 Creative Park</a></li>
-                        <li>Night market exploration</li>
-                        <li>📍 Taipei Marriott Hotel</li>
-                    </ul>
-                    <div class="photo-gallery">
-                        <div class="gallery-container">
-                            <div class="gallery-images" id="gallery-day4">
-                                <img src="images/day4-1.jpg" alt="Relaxing morning" class="gallery-image">
-                                <img src="images/day4-2.jpg" alt="Huashan 1914" class="gallery-image">
-                                <img src="images/day4-3.jpg" alt="Shi-Men Ting" class="gallery-image">
-                                <img src="images/day4-4.jpg" alt="Night market" class="gallery-image">
-                                <img src="images/day4-5.jpg" alt="Street food" class="gallery-image">
-                            </div>
-                            <button class="gallery-nav gallery-prev" onclick="changeSlide('day4', -1)">‹</button>
-                            <button class="gallery-nav gallery-next" onclick="changeSlide('day4', 1)">›</button>
-                        </div>
-                        <div class="gallery-dots">
-                            <span class="gallery-dot active" onclick="currentSlide('day4', 1)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day4', 2)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day4', 3)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day4', 4)"></span>
-                            <span class="gallery-dot" onclick="currentSlide('day4', 5)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="day-item" id="day-5">
-                <div class="day-number">5</div>
+                <div class="day-number">1</div>
                 <div class="day-content">
                     <h3>🍜 August 6 (Wednesday) — Cook Like a Local</h3>
                     <ul>
@@ -1561,6 +1375,8 @@
                         <li><strong>10:00:</strong> Hands-on cooking class at <a href="https://maps.app.goo.gl/Py7yN9FTqwiaWJaN6" target="_blank" style="color: white; text-decoration: underline;">Cooking Fun Taiwan</a></li>
                         <li><strong>13:00:</strong> <a href="https://maps.app.goo.gl/58KJn5m9EmxVt9DcA" target="_blank" style="color: white; text-decoration: underline;">Dihua Street</a> exploration</li>
                         <li><strong>15:00:</strong> <a href="https://maps.app.goo.gl/zoe52P9athDP1idW7" target="_blank" style="color: white; text-decoration: underline;">Lungshan Temple</a> visit</li>
+                        <li>Optional: <a href="https://maps.app.goo.gl/XxFSYZyyCpBcUV5W6" target="_blank" style="color: white; text-decoration: underline;">Shi-Men Ting</a>: mango shave ice, shopping, boba, claw machines!</li>
+                        <li>Optional: <a href="https://maps.app.goo.gl/T6e5DxBEbfFyocb26" target="_blank" style="color: white; text-decoration: underline;">Zhongshan Linear Park</a></li>
                         <li>Snake Alley Huaxi Night Market</li>
                         <li>📍 Taipei Marriott Hotel</li>
                     </ul>
@@ -1588,7 +1404,7 @@
             </div>
 
             <div class="day-item" id="day-6">
-                <div class="day-number">6</div>
+                <div class="day-number">2</div>
                 <div class="day-content">
                     <h3>🏛 August 7 (Thursday) — Palaces & Parks</h3>
                     
@@ -1641,7 +1457,7 @@
             </div>
 
             <div class="day-item" id="day-7">
-                <div class="day-number">7</div>
+                <div class="day-number">3</div>
                 <div class="day-content">
                     <h3>🚆 August 8 (Friday) — Off to Tainan!</h3>
                     <ul>
@@ -1676,7 +1492,7 @@
             </div>
 
             <div class="day-item" id="day-8">
-                <div class="day-number">8</div>
+                <div class="day-number">4</div>
                 <div class="day-content">
                     <h3>🎶 August 9 (Saturday) — Culture & Return</h3>
                     <ul>
@@ -1710,7 +1526,7 @@
             </div>
 
             <div class="day-item" id="day-9">
-                <div class="day-number">9</div>
+                <div class="day-number">5</div>
                 <div class="day-content">
                     <h3>🧵 August 10 (Sunday) — Creative Pulse</h3>
                     <ul>
@@ -1744,7 +1560,7 @@
             </div>
 
             <div class="day-item" id="day-10">
-                <div class="day-number">10</div>
+                <div class="day-number">6</div>
                 <div class="day-content">
                     <h3>🌾 August 11 (Monday) — Yilan Day Trip</h3>
                     <ul>
@@ -1778,7 +1594,7 @@
             </div>
 
             <div class="day-item" id="day-11">
-                <div class="day-number">11</div>
+                <div class="day-number">7</div>
                 <div class="day-content">
                     <h3>🏖 August 12 (Tuesday) — Beach & Heritage</h3>
                     <ul>
@@ -1811,7 +1627,7 @@
             </div>
 
             <div class="day-item" id="day-12">
-                <div class="day-number">12</div>
+                <div class="day-number">8</div>
                 <div class="day-content">
                     <h3>😊 August 13 (Wednesday) — Free Day/TBD</h3>
                     <ul>
@@ -1824,7 +1640,7 @@
             </div>
 
             <div class="day-item" id="day-13">
-                <div class="day-number">13</div>
+                <div class="day-number">9</div>
                 <div class="day-content">
                     <h3>😊 August 14 (Thursday) — Free Day/TBD</h3>
                     <ul>
@@ -1857,7 +1673,7 @@
             </div>
 
             <div class="day-item" id="day-14">
-                <div class="day-number">14</div>
+                <div class="day-number">10</div>
                 <div class="day-content">
                     <h3>✈️ August 15 (Friday) — Goodbye for Now</h3>
                     <ul>
@@ -2258,6 +2074,134 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="welcome-letter">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Welcome Letter</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">We're so excited to have you join us for this unforgettable journey to Taiwan! This trip is all about meaningful exploration, immersive cultural experiences, and most importantly—fun, connection, and adventure for everyone in the group.</p>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">We've put together a mix of engaging, interactive activities that will allow everyone to learn about Taiwan and have fun. We want to focus on giving the kids opportunities to explore independently, build confidence, and experience the incredible safety and friendliness that Taiwan is known for.</p>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">At the same time, we know how important flexibility is when traveling, so the schedule includes plenty of free time to relax, recharge, or go off and explore on your own. We want you to feel like you're on vacation too!!</p>
+            
+            <p style="text-align: center; font-size: 1.2rem; margin-top: 30px;"><strong>With excitement,<br>Dina and Welly</strong></p>
+        </div>
+
+        <div class="info-card past-dates">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea; font-size: 2.5rem;">Past Dates</h2>
+            
+            <div class="room-tabs">
+                <button class="room-tab active" onclick="showPastDateTab('pastday1')">Aug 2</button>
+                <button class="room-tab" onclick="showPastDateTab('pastday2')">Aug 3</button>
+                <button class="room-tab" onclick="showPastDateTab('pastday3')">Aug 4</button>
+                <button class="room-tab" onclick="showPastDateTab('pastday4')">Aug 5</button>
+            </div>
+
+            <div id="pastday1" class="room-content active">
+                <div class="day-item">
+                    <div class="day-number">1</div>
+                    <div class="day-content">
+                        <h3>🌇 August 2 (Saturday) — Welcome to Taipei</h3>
+                        
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; margin: 15px 0; backdrop-filter: blur(5px);">
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 1rem; text-align: center;">✈️ Flight Arrivals</h4>
+                            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                                
+                                <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; min-width: 280px; flex: 1; max-width: 400px;">
+                                    <div style="font-weight: bold; color: #FFE66D; margin-bottom: 8px;">JX001 - 5:05 AM</div>
+                                    <ul style="font-size: 0.85rem; line-height: 1.4; color: rgba(255,255,255,0.9); margin: 0; padding-left: 15px; list-style-type: disc; columns: 3; column-gap: 10px;">
+                                        <li>Jackie</li>
+                                        <li>Julien</li>
+                                        <li>Matteo</li>
+                                        <li>Wyatt</li>
+                                        <li>Dakota</li>
+                                        <li>Welly</li>
+                                        <li>Dina</li>
+                                        <li>Kathleen</li>
+                                        <li>Joe</li>
+                                        <li>Jack</li>
+                                        <li>Henry</li>
+                                        <li>Owen</li>
+                                    </ul>
+                                </div>
+                                
+                                <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; min-width: 280px; flex: 1; max-width: 400px;">
+                                    <div style="font-weight: bold; color: #FFE66D; margin-bottom: 8px;">CI-157 - 3:00 PM</div>
+                                    <ul style="font-size: 0.85rem; line-height: 1.4; color: rgba(255,255,255,0.9); margin: 0; padding-left: 15px; list-style-type: disc;">
+                                        <li>Logan</li>
+                                        <li>Lauren</li>
+                                        <li>Linda</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <ul>
+                            <li><strong>7:00:</strong> Settle into rooms and explore Dazhi neighborhood</li>
+                            <li><strong>10:00 AM Departure:</strong> Arrival in Taipei + breakfast at the hotel</li>
+                            <li><strong>10:00-12:00:</strong> <a href="https://maps.app.goo.gl/mogZk8yjsK1GcjAJ9" target="_blank" style="color: white; text-decoration: underline;">National Palace Museum</a>/<a href="https://maps.app.goo.gl/Cd6zRpzuLVBhS1ph6" target="_blank" style="color: white; text-decoration: underline;">Chiang Kai-Shek Shilin Residence</a></li>
+                            <li><strong>12:20~:</strong> Shrimping adventure</li>
+                            <li>Optional: <a href="https://maps.app.goo.gl/uiDRjL75Xzrvqgyc9" target="_blank" style="color: white; text-decoration: underline;">The Grand Hotel</a></li>
+                            <li><strong>~</strong>Return to hotel for some rest</li>
+                            <li>Early Evening Options: Foot Massage, Beef Noodle, Night Market</li>
+                            <li>📍 Taipei Marriott Hotel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pastday2" class="room-content">
+                <div class="day-item">
+                    <div class="day-number">2</div>
+                    <div class="day-content">
+                        <h3>🌿 August 3 (Sunday) — Mountains & Markets</h3>
+                        <ul>
+                            <li><strong>8:00 AM Departure:</strong> Scenic drive through Yangmingshan National Park</li>
+                            <li><strong>13:00:</strong> Visit the <a href="https://maps.app.goo.gl/qGS2Q8ndGQNtCYDHA" target="_blank" style="color: white; text-decoration: underline;">alpacas</a>!!</li>
+                            <li><strong>15:00:</strong> <a href="https://maps.app.goo.gl/aehjReWmT1qchAto9" target="_blank" style="color: white; text-decoration: underline;">Beitou Library</a> / Hot Spring Park</li>
+                            <li><strong>16:30:</strong> Group outing to Taipei 101 in the evening</li>
+                            <li>Free time to relax or explore</li>
+                            <li><strong>19:00:</strong> Dinner - Kanpai Classic</li>
+                            <li>📍 Taipei Marriott Hotel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pastday3" class="room-content">
+                <div class="day-item">
+                    <div class="day-number">3</div>
+                    <div class="day-content">
+                        <h3>🏮 August 4 (Monday) — Magical Jiufen</h3>
+                        <ul>
+                            <li><strong>9:30 AM Departure:</strong> Head to Pingxi for sky lantern adventure</li>
+                            <li><strong>10:30~13:30:</strong> Release sky lanterns and visit waterfalls in <a href="https://maps.app.goo.gl/bZpbpPuUb1JqJvSb7" target="_blank" style="color: white; text-decoration: underline;">Pingxi</a></li>
+                            <li><strong>14:20~16:00:</strong> Explore the lantern-lit charm of <a href="https://maps.app.goo.gl/GNmaVGAvDsdR4wHu7" target="_blank" style="color: white; text-decoration: underline;">Jiufen Old Street</a></li>
+                            <li>Experience the Spirited Away atmosphere</li>
+                            <li>📍 Taipei Marriott Hotel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pastday4" class="room-content">
+                <div class="day-item">
+                    <div class="day-number">4</div>
+                    <div class="day-content">
+                        <h3>🎭 August 5 (Tuesday) — Rest and Urban Wandering</h3>
+                        <ul>
+                            <li><strong>9:30 AM Departure</strong></li>
+                            <li>10:30 Presidential Office Building</li>
+                            <li><strong>13:00~:</strong> <a href="https://maps.app.goo.gl/XxFSYZyyCpBcUV5W6" target="_blank" style="color: white; text-decoration: underline;">Shi-Men Ting</a>: mango shave ice, shopping, boba, claw machines!</li>
+                            <li>Optional: <a href="https://maps.app.goo.gl/KgT7VNfQMP1u8Fyf8" target="_blank" style="color: white; text-decoration: underline;">Huashan 1914 Creative Park</a></li>
+                            <li>Night market exploration</li>
+                            <li>📍 Taipei Marriott Hotel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
         <p>Created with care by Johnny (Tzu-Yang) Ho · Formosa Studio · For August 2025 Trip · © All rights reserved.</p>
     </div>
@@ -2404,6 +2348,52 @@
                 menu.style.display = 'none';
             }
         });
+
+        function showPastDateTab(tabId) {
+            // Get currently active content
+            const currentActive = document.querySelector('.past-dates .room-content.active');
+            
+            // Remove active state from all tabs
+            const allTabs = document.querySelectorAll('.past-dates .room-tab');
+            allTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+            
+            // If there's currently active content, fade it out first
+            if (currentActive) {
+                currentActive.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Hide all content
+                    const allContents = document.querySelectorAll('.past-dates .room-content');
+                    allContents.forEach(content => {
+                        content.classList.remove('active');
+                        content.style.opacity = '';
+                    });
+                    
+                    // Show selected content
+                    const selectedContent = document.getElementById(tabId);
+                    if (selectedContent) {
+                        selectedContent.classList.add('active');
+                        selectedContent.style.opacity = '0';
+                        
+                        // Fade in the new content
+                        setTimeout(() => {
+                            selectedContent.style.opacity = '1';
+                        }, 50);
+                    }
+                }, 300);
+            } else {
+                // No current active content, just show the new one
+                const selectedContent = document.getElementById(tabId);
+                if (selectedContent) {
+                    selectedContent.classList.add('active');
+                }
+            }
+        }
 
         function showRoomTab(tabId) {
             // Hide all content
